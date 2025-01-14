@@ -1,10 +1,14 @@
+NB: assumes running on linux x64 system.
+Pre-requisites: run `make clean compile-all` in the root directory
+
 Setup:
 
-  $ cd "$TESTDIR/../app"
+  $ cd "$TESTDIR/../build"
 
-Now test stuff.
+Test 1: help text
 
-  $ ./jaunch/jaunch-linux-x64
+  $ ./bin/linuxX64/releaseExecutable/jaunch.kexe
+  
   Hello! You have found the Jaunch configurator.
   Your curiosity is an asset. :-)
   
@@ -20,22 +24,42 @@ Now test stuff.
       jaunch fizzbuzz --heap 2g --debugger 8000
   
   and watch how Jaunch transforms the arguments.
+  If the behavior is not what you expect, try using the --debug flag:
   
-  You can learn similar information using Jaunch's --dry-run option:
+      jaunch fizzbuzz --heap 2g --debugger 8000 --debug
+  
+  You can also see similar information using Jaunch's --dry-run option:
   
       fizzbuzz --heap 2g --debugger 8000 --dry-run
   
   For more details, check out the nearby TOML files. Happy Jaunching!
+  
   [1]
+--End Test 1 epected output--
 
-  $ jaunch/jaunch-linux-x64 parsy a b c
-  JVM
-  8
-  /*/libjvm.so (glob)
+Test 2: using jaunch to launch an absent application
+
+  $ ./bin/linuxX64/releaseExecutable/jaunch.kexe parsy a b c
+  ERROR
   2
-  -Djava.class.path=/*/lib/parsington-3.1.0.jar* (glob)
-  -Xmx128m
+  20
+  Jaunch config directory not found. Please place config in one of: * (glob)
+  [20]
+--End of Test 2 expected output--
+
+Test 3: use jaunch configurator manually
+
+  $ mkdir .jaunch
+  $ cp -r ../configs/* .jaunch/
+  $ ./bin/linuxX64/releaseExecutable/jaunch.kexe parsy a b c
+  JVM
+  7
+  *libjvm.so (glob)
+  1
+  -Xmx64m
   org/scijava/parsington/Main
   a
   b
   c
+  $ rm -rf .jaunch
+--End of Test 3 expected output--
