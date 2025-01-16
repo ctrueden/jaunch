@@ -84,6 +84,8 @@ fun main(args: Array<String>) {
         "apply-update" to { _ -> applyUpdate(appDir, appDir / "update") },
         "dry-run" to { _ -> dryRunMode = true },
         "help" to { _ -> help(exeFile, programName, supportedOptions) },
+        "print-app-dir" to { _ -> printDir(appDir, "Application") },
+        "print-config-dir" to { _ -> printDir(configDir, "Configuration") },
     )
 
     // Execute the global directives (e.g. applying updates) before configuring
@@ -626,6 +628,12 @@ private fun help(exeFile: File?, programName: String, supportedOptions: JaunchOp
     printlnErr("In addition, the following options are supported:")
     val optionsUnique = linkedSetOf(*supportedOptions.values.toTypedArray())
     optionsUnique.forEach { printlnErr(it.help()) }
+}
+
+private fun printDir(dir: File, dirName: String) {
+    printlnErr("--- $dirName Directory ---")
+    printlnErr(dir.path)
+    printlnErr()
 }
 
 /** Recursively move over all files in the update subdir. */
