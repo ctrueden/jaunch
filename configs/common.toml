@@ -98,6 +98,7 @@ supported-options = [
     '--info|informational output',
     '--debug|verbose output',
     '--print-app-dir|print directory where the application is located',
+    '--print-config-dir|print directory where the configuration files are located',
     '--system|do not try to run bundled runtime',
 ]
 
@@ -179,6 +180,7 @@ modes = []
 #                        Useful to see what would happen, without it actually happening.
 # * print-app-dir      - Print out the path to the application. Typically, this will be
 #                        the folder containing the launcher.
+# * print-config-dir   - Print out the path to the configuration directory.
 #
 # Directives in UPPER CASE are native launch modes handled on the C/native side,
 # while directives in web-case are executed on the configurator side.
