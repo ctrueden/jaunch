@@ -4,6 +4,9 @@
 /build/
 /jaunch.tar.gz
 
+### Vim ###
+*.swp
+
 ### IntelliJ IDEA ###
 /.idea/
 
