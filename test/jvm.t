@@ -4,10 +4,7 @@ Pre-requisites: run `make clean compile-all` in the root directory
 Setup:
 
   $ cd "$TESTDIR/../build"
-  $ mkdir .jaunch
-  $ cp -r ../configs/* .jaunch/
-  $ cp bin/linuxX64/releaseExecutable/jaunch.kexe .jaunch/jaunch-linux-x64
-  $ cp launcher-linux-x64 hi
+  $ sh ../test/make-app.sh hi
 
 Tests:
   $ ./bin/linuxX64/releaseExecutable/jaunch.kexe hi --print-java-home
@@ -309,5 +306,4 @@ For testing --java-home, we use an invalid path and just verify it's in the sear
 --End of expected output--
 
 Cleanup:
-  $ rm -rf .jaunch
-  $ rm hi
+  $ sh ../test/clean-app.sh hi

@@ -49,8 +49,7 @@ Test 2: using jaunch to launch an absent application
 
 Test 3: use jaunch configurator manually
 
-  $ mkdir .jaunch
-  $ cp -r ../configs/* .jaunch/
+  $ sh ../test/make-app.sh
   $ ./bin/linuxX64/releaseExecutable/jaunch.kexe parsy a b c
   JVM
   7
@@ -61,5 +60,5 @@ Test 3: use jaunch configurator manually
   a
   b
   c
-  $ rm -rf .jaunch
+  $ sh ../test/clean-app.sh
 --End of Test 3 expected output--
