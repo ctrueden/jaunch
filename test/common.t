@@ -4,8 +4,7 @@ Pre-requisites: run `make clean compile-all` in the root directory
 Setup:
 
   $ cd "$TESTDIR/../build"
-  $ mkdir .jaunch
-  $ cp -r ../configs/* .jaunch/
+  $ sh ../test/make-app.sh
 
 Test: Help text with --help
   $ ./bin/linuxX64/releaseExecutable/jaunch.kexe hello --help
@@ -263,5 +262,4 @@ Test: print-config-dir
   HelloSwing
 
 Cleanup:
-  $ rm -rf .jaunch
-  $ rm hello.log
+  $ sh ../test/clean-app.sh hello
