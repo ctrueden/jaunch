@@ -1,0 +1,22 @@
+# *** Welcome to the example Hi application's configuration file! ***
+#
+# This launcher is built on Jaunch (https://github.com/scijava/jaunch).
+#
+# The contents below define Hi's particular launcher behavior and features,
+# on top of Jaunch's "sensible default" functionality.
+#
+# See the common.toml file for more details about Jaunch configuration.
+
+jaunch-version = 1
+
+program-name = 'Hi'
+
+includes = ['jvm.toml']
+
+modes = ['LAUNCH:JVM']
+
+jvm.version-min = '8'
+
+jvm.classpath = ['${app-dir}/.jaunch']
+
+jvm.main-class = ['HelloWorld']
