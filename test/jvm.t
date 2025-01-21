@@ -126,6 +126,21 @@ Memory tests: Run the app to verify the invalid heap size
   Error creating Java Virtual Machine
   [3]
 
+Memory tests: use a .cfg file to override memory settings
+  $ echo "cfg.max-heap = '50%'" >> .jaunch/hi.toml
+  $ echo "jvm.max-heap = '\${cfg.max-heap}'" >> .jaunch/hi.toml
+  $ ./hi --dry-run
+  [DRY-RUN] /*/bin/java -Djava.class.path=/*/build/.jaunch -Xmx*m HelloWorld (glob)
+  $ echo "max-heap=2g" > .jaunch/hi.cfg
+  $ ./hi --dry-run
+  [DRY-RUN] /*/bin/java -Djava.class.path=/*/build/.jaunch -Xmx2g HelloWorld (glob)
+  $ echo "max-heap=4g" > .jaunch/hi.cfg
+  $ ./hi --dry-run
+  [DRY-RUN] /*/bin/java -Djava.class.path=/*/build/.jaunch -Xmx4g HelloWorld (glob)
+  $ rm .jaunch/hi.cfg
+  $ rm .jaunch/hi.toml
+  $ cp ../configs/hi.toml .jaunch/
+
 Classpath tests: move our .class file and verify we broke things
   $ mv .jaunch/HelloWorld.class .
   $ ./hi
