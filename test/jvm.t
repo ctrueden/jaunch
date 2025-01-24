@@ -1,5 +1,7 @@
 NB: general tests for Java configuration, using the 'hi' Java program
-Pre-requisites: run `make clean compile-all` in the root directory
+Pre-requisites:
+1. run `make clean compile-all` in the root directory
+2. Ensure a suitable JVM is installed on the system
 
 Setup:
 
