@@ -1,4 +1,7 @@
-Pre-requisites: run `make clean compile-all` in the root directory
+Tests for simple Java application
+Pre-requisites:
+1. run `make clean compile-all` in the root directory
+2. Ensure a suitable JVM is installed on the system
 
 Setup:
 
