@@ -2,11 +2,7 @@ Setup:
 
   $ cd "$TESTDIR/../build"
   $ sh ../test/make-app.sh parsy
-  $ mkdir lib
-  $ mvn dependency:copy -Dartifact=org.scijava:parsington:LATEST -DoutputDirectory=lib >/dev/null
-  $ mvn dependency:copy -Dartifact=org.scijava:parsington:LATEST:pom -DoutputDirectory=. >/dev/null
-  $ mv parsington*.pom pom.xml
-  $ mvn dependency:copy-dependencies -DoutputDirectory=lib >/dev/null
+  $ sh ../test/gather-lib.sh org.scijava parsington
 
 Test that the correct Java program actually runs.
 
@@ -183,5 +179,4 @@ Test command line argument combinations.
 
 Cleanup:
   $ sh ../test/clean-app.sh parsy
-  $ rm pom.xml
   $ rm -rf lib
