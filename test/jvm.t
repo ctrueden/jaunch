@@ -212,6 +212,7 @@ For testing --java-home, we use an invalid path and just verify it's in the sear
   [DEBUG] * JaunchOption(flags=[--debug], assignment=null, help=verbose output)
   [DEBUG] * JaunchOption(flags=[--print-app-dir], assignment=null, help=print directory where the application is located)
   [DEBUG] * JaunchOption(flags=[--print-config-dir], assignment=null, help=print directory where the configuration files are located)
+  [DEBUG] * JaunchOption(flags=[--system], assignment=null, help=do not try to run bundled runtime)
   [DEBUG] 
   [DEBUG] Input arguments processed:
   [DEBUG] * hints -> [OS:LINUX, ARCH:X64, --java-home, --debug]
@@ -322,5 +323,16 @@ For testing --java-home, we use an invalid path and just verify it's in the sear
   [DEBUG] \-------------------------------/
 --End of expected output--
 
+System flag testing: make a fake "bundled" java directory and ensure it's
+on the search path
+  $  mkdir -p ./java/linux-x64/hello
+  $ ./hi --debug 2>&1 | grep "hello"
+  [DEBUG] * /*/java/linux-x64/hello (glob)
+  [DEBUG] Analyzing candidate JVM directory: '/*java/linux-x64/hello' (glob)
+Running again with --system should skip this directory for searching
+  $ ./hi --system --debug 2>&1 | grep "hello"
+  [1]
+
 Cleanup:
   $ sh ../test/clean-app.sh hi
+  $ rm -rf ./java
