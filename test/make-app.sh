@@ -3,7 +3,7 @@
 # an app launcher
 # Param 1: name of the app to make (optional)
 
-mkdir .jaunch
+mkdir -p .jaunch
 cp -r ../configs/* .jaunch/
 cp bin/linuxX64/releaseExecutable/jaunch.kexe ./jaunch-linux-x64
 
