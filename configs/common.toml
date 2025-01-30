@@ -95,7 +95,6 @@ includes = []
 supported-options = [
     '--help,-h|show this help',
     '--dry-run|show the command line, but do not run anything',
-    '--info|informational output',
     '--debug|verbose output',
     '--print-app-dir|print directory where the application is located',
     '--print-config-dir|print directory where the configuration files are located',
