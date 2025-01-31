@@ -17,6 +17,6 @@ modes = ['LAUNCH:JVM']
 
 jvm.version-min = '8'
 
-jvm.classpath = ['${app-dir}/.jaunch']
+jvm.classpath = ['${app-dir}']
 
 jvm.main-class = ['HelloWorld']

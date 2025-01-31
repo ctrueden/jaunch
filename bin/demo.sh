@@ -38,7 +38,7 @@ do
   test "$f" != "${f%-gui.exe}" && winGUI=true || winGUI=false
   if [ "$winGUI" = false ]
   then
-    for app in jy parsy paunch repl
+    for app in hi jy parsy paunch repl
     do
       (set -x; cp "$f" "$targetDir/$app$suffix")
     done
@@ -56,7 +56,7 @@ do
 done
 
 # Copy wrapper launch scripts.
-for app in jy parsy paunch repl hello
+for app in jy parsy paunch repl hello hi
 do
   case "$(uname -s)" in
     MINGW*|MSYS*) (
@@ -71,8 +71,11 @@ do
   esac
 done
 
-# Copy hello app Java program.
-(set -x; cp configs/HelloSwing.class "$demoDir/")
+# Copy simple Java program classes.
+for prog in HelloSwing HelloWorld
+do
+  (set -x; cp "configs/$prog.class" "$demoDir/")
+done
 
 # Copy jaunch configurator binaries.
 echo 'Copying jaunch configurator binaries...'
@@ -89,6 +92,7 @@ for f in \
   Props.class \
   common.toml \
   hello.toml \
+  hi.toml \
   jvm.toml \
   jy.toml \
   parsy.toml \

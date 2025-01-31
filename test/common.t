@@ -1,10 +1,9 @@
 NB: general tests for common configuration, using 'hello' 
-Pre-requisites: run `make clean compile-all` in the root directory
+Pre-requisites: run `make clean demo` in the root directory
 
 Setup:
 
-  $ cd "$TESTDIR/../build"
-  $ sh ../test/make-app.sh
+  $ cd "$TESTDIR/../demo"
 
 Test: Help text with --help
   $ ./bin/linuxX64/releaseExecutable/jaunch.kexe hello --help
@@ -260,6 +259,3 @@ Test: print-config-dir
   1
   -Djava.class.path=/*/build (glob)
   HelloSwing
-
-Cleanup:
-  $ sh ../test/clean-app.sh hello
